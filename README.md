@@ -25,7 +25,10 @@ E.g for installing _NoWordpress_ filter you must copy the filter file inside /et
 
 You can add more filters for other needs like 401 or 403 responses following the same logic
 
-> Note: run `sudo systemctl restart fail2ban` for config to take effect.
+<br>
+
+> [!IMPORTANT]
+> Run `sudo systemctl restart fail2ban` for config to take effect.
 
 ## Testing
 
