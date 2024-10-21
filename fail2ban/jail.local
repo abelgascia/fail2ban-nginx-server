@@ -1,0 +1,39 @@
+[nginx-auth]
+enabled = true
+filter = nginx-auth
+action = iptables-multiport[name=NoAuthFailures, port="http,https"]
+logpath = /var/log/nginx*/*error*.log
+bantime = 600 # 10 minutes
+maxretry = 5
+
+[nginx-noagent]
+enabled = true
+filter = nginx-noagent
+action = iptables-multiport[name=NoAgent, port="http,https"]
+logpath = /var/log/nginx*/*access*.log
+bantime = 2592000 # 30 days
+maxretry = 1
+
+[nginx-noscript]
+enabled = true
+action = iptables-multiport[name=NoScript, port="http,https"]
+filter = nginx-noscript
+logpath = /var/log/nginx*/*access*.log
+maxretry = 6
+bantime = 86400 # 1 day
+
+[nginx-proxy]
+enabled = true
+action = iptables-multiport[name=NoProxy, port="http,https"]
+filter = nginx-proxy
+logpath = /var/log/nginx*/*access*.log
+maxretry = 0
+bantime = 86400 # 1 day
+
+[nginx-nowordpress]
+enabled = true
+action = iptables-multiport[name=NoWordpress, port="http,https"]
+filter = nginx-nowordpress
+logpath = /var/log/nginx*/*access*.log
+maxretry = 0
+bantime = 86400 # 1 day
